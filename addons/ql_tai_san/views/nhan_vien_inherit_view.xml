@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_nhan_vien_form_inherit_ts" model="ir.ui.view">
+        <field name="name">nhan.vien.form.inherit.qlts</field>
+        <field name="model">nhan_vien</field>
+        <field name="inherit_id" ref="ql_tai_chinh.view_nhan_vien_form_inherit_tc"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[@name='tai_san_tai_chinh_notebook']" position="inside">
+                <page string="Danh sách Tài sản" name="page_tai_san">
+                    <field name="tai_san_ids" readonly="1">
+                        <tree>
+                            <field name="ma_tai_san"/>
+                            <field name="name"/>
+                            <field name="gia_tri_goc"/>
+                            <field name="trang_thai"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

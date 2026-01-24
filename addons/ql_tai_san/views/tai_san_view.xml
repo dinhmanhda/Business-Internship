@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_quan_ly_tai_san_tree" model="ir.ui.view">
+        <field name="name">quan.ly.tai.san.tree</field>
+        <field name="model">quan.ly.tai.san</field>
+        <field name="arch" type="xml">
+            <tree string="Danh sách Tài sản">
+                <field name="ma_tai_san"/>
+                <field name="name"/>
+                <field name="gia_tri_goc" sum="Tổng nguyên giá"/>
+                <field name="khau_hao_thang" sum="Tổng khấu hao/tháng"/>
+                <field name="gia_tri_con_lai" sum="Tổng giá trị còn lại"/>
+                <field name="ghi_chu"/>
+                <field name="trang_thai" widget="badge" decoration-info="trang_thai == 'moi'" decoration-success="trang_thai == 'dang_su_dung'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_quan_ly_tai_san_form" model="ir.ui.view">
+        <field name="name">quan.ly.tai.san.form</field>
+        <field name="model">quan.ly.tai.san</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm_and_link_finance" 
+                            string="Xác nhận &amp; Đẩy kế toán" 
+                            type="object" 
+                            class="oe_highlight" 
+                            attrs="{'invisible': [('trang_thai', '!=', 'moi')]}"/>
+                    <field name="trang_thai" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ma_tai_san"/>
+                            <field name="name"/>
+                            <field name="nguoi_phu_trach_id"/>
+                        </group>
+                        <group>
+                            <field name="gia_tri_goc"/>
+                            <field name="thoi_gian_khau_hao"/>
+                            <field name="khau_hao_thang"/>
+                            <field name="phieu_ke_toan_id"/>
+                        </group>
+                    </group>
+                    <group string="Ghi chú hiện trạng">
+                        <field name="ghi_chu" nolabel="1" placeholder="Nhập tình trạng đặc biệt (ví dụ: rơi móp, hỏng hóc...)"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_quan_ly_tai_san" model="ir.actions.act_window">
+        <field name="name">Quản lý Tài sản</field>
+        <field name="res_model">quan.ly.tai.san</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_quan_ly_tai_san_root" name="Quản lý Tài sản" sequence="10"/>
+    <menuitem id="menu_quan_ly_tai_san_list" name="Tài sản" parent="menu_quan_ly_tai_san_root" action="action_quan_ly_tai_san"/>
+</odoo>

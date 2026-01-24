@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_quan_ly_tai_chinh_tree" model="ir.ui.view">
+        <field name="name">quan.ly.tai.chinh.tree</field>
+        <field name="model">quan.ly.tai.chinh</field>
+        <field name="arch" type="xml">
+            <tree string="Danh sách Tài chính">
+                <field name="name"/>
+                <field name="nhan_vien_id"/>
+                <field name="loai_phieu"/>
+                <field name="so_tien" sum="Tổng tiền"/>
+                <field name="gia_tri_con_lai"/>
+                <field name="trang_thai"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_quan_ly_tai_chinh" model="ir.actions.act_window">
+        <field name="name">Quản lý Tài chính</field>
+        <field name="res_model">quan.ly.tai.chinh</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_quan_ly_tai_chinh_root" name="Tài chính" sequence="20"/>
+    <menuitem id="menu_quan_ly_tai_chinh_list" name="Phiếu thu chi" parent="menu_quan_ly_tai_chinh_root" action="action_quan_ly_tai_chinh"/>
+</odoo>

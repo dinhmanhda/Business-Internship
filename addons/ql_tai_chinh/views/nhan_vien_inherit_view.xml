@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_nhan_vien_form_inherit_tc" model="ir.ui.view">
+        <field name="name">nhan.vien.form.inherit.qltc</field>
+        <field name="model">nhan_vien</field>
+        <field name="inherit_id" ref="nhan_su.view_nhan_vien_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook name="tai_san_tai_chinh_notebook">
+                    <page string="Lịch sử Tài chính" name="page_tai_chinh">
+                        <field name="tai_chinh_ids" readonly="1">
+                            <tree string="Lịch sử Tài chính">
+                                <field name="name"/>
+                                <field name="ngay_lap"/>
+                                <field name="loai_phieu"/>
+                                <field name="so_tien" sum="Tổng tiền"/>
+                                <field name="gia_tri_con_lai"/>
+                                <field name="trang_thai" widget="badge" 
+                                       decoration-info="trang_thai == 'nhap'" 
+                                       decoration-success="trang_thai == 'xac_nhan'"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
